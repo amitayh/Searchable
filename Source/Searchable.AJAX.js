@@ -13,7 +13,7 @@ Searchable.AJAX = new Class({
 
     initialize: function(select, url, options) {
         this.parent(select, options);
-        this.xhr = new Request.JSON($merge(this.options.xhr, {
+        this.xhr = new Request.JSON(Object.merge(this.options.xhr, {
             onRequest: this.onRequest.bind(this),
             onComplete: this.onComplete.bind(this),
             onSuccess: this.onSuccess.bind(this)
@@ -29,13 +29,13 @@ Searchable.AJAX = new Class({
     send: function() {
         var data = {};
         data[this.options.queryParam] = this.query.get('value');
-        this.xhr.send(Hash.toQueryString(data));
+        this.xhr.send(Object.toQueryString(data));
         return this;
     },
 
     onKeyUp: function() {
-        $clear(this._timer);
-        this._timer = this.send.delay(this.options.delay, this);
+        clearTimeout(this.$timer);
+        this.$timer = this.send.delay(this.options.delay, this);
         this.fireEvent('keyUp');
     },
 
@@ -53,7 +53,7 @@ Searchable.AJAX = new Class({
         this.clear(!this.options.keepSelected);
         if (response) {
             response.each(function(option) {
-                this.add(option.id, option.name);
+                this.add(option.value, option.name);
             }, this);
         }
         this.fireEvent('success');
