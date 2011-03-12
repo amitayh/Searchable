@@ -1,3 +1,21 @@
+/*
+---
+description: Extends Searchable class to allow AJAX based search
+
+license: MIT-style
+
+authors:
+- Amitay Horwitz
+
+requires:
+- Searchable
+
+provides:
+- Searchable.AJAX
+
+...
+*/
+
 Searchable.AJAX = new Class({
 
     Extends: Searchable,
