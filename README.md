@@ -11,7 +11,7 @@ Adds a search box to existing select box to filter items
 
 ### Arguments ###
 
-1. master - (string) A string of the id for an Element, (element) Element reference - the select box
+1. select - (string) A string of the id for an Element, (element) Element reference - the select box
 2. options - (object) a key/value set of options
 
 ### Options ###
